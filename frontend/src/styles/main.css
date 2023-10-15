@@ -9,3 +9,22 @@
 body{
     font-family: 'Source Sans 3', sans-serif;
 }
+
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+button{
+ font: inherit;
+ font-weight: bold;
+ font-size: 18px;
+ padding: 5px 30px;
+ border-radius: 10px;
+ border: none;
+ background-color: #01b3e3;
+ color: white;
+ cursor: pointer;
+}

@@ -4,7 +4,7 @@ import FooterLogo from "../images/footer_logo.svg"
 export default function Footer() {
   return (
     <div className='footer'>
-      <div className='block'>
+      <div className='block logo'>
         <img src={FooterLogo} alt="" />
         <button>Join the Community</button>
       </div>

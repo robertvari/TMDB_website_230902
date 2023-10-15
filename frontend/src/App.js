@@ -6,9 +6,11 @@ import "./styles/main.css"
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <div>
+        <Navbar/>
+        <MovieListView/>
+      </div>
 
-      <MovieListView/>
       
       <Footer/>
     </div>
