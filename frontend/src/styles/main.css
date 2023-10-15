@@ -1,5 +1,8 @@
 @import "Navbar";
 @import "Footer";
+@import "MovieListView";
+@import "Sidepanel";
+@import "CardGrid";
 
 *{
     margin: 0;
