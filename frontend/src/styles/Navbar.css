@@ -3,6 +3,11 @@
     color: white;
     display: flex;
     padding: 30px;
+    justify-content: space-between;
+}
+
+.navbar .nav-block{
+    display: flex;
 }
 
 .navbar .navlink{
@@ -16,4 +21,9 @@
     width: 200px;
     cursor: pointer;
     margin-right: 30px;
+}
+
+.navbar i{
+    color: #01b3e3;
+    font-size: 25px;
 }
