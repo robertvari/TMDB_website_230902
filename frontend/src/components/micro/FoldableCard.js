@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function FoldableCard({title}) {
+export default function FoldableCard({title, content}) {
     const [opened, set_opened] = useState(false)
 
     return (
@@ -15,9 +15,9 @@ export default function FoldableCard({title}) {
 
             <div>
                 {
-                    opened&& <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, ab.</p>
+                    opened&& content
                 }
-            </div>    
+            </div>
         </div>
     )
 }

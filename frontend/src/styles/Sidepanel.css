@@ -1,5 +1,6 @@
 .sidepanel{
     min-width: 260px;
+    max-width: 260px;
 
     margin-right: 10px;
 }
