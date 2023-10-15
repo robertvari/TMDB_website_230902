@@ -1,0 +1,19 @@
+.navbar{
+    background-color: #032541;
+    color: white;
+    display: flex;
+    padding: 30px;
+}
+
+.navbar .navlink{
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.navbar img{
+    width: 200px;
+    cursor: pointer;
+    margin-right: 30px;
+}
