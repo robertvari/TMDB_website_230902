@@ -3,3 +3,11 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.card-grid a{
+    color: black;
+}
+
+.card-grid a:hover{
+    text-decoration: none;
+}

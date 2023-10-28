@@ -69,3 +69,9 @@ input:focus{
     border-color: var(--light-blue);
     transition: all 0.5s;
 }
+
+hr{
+    border: none;
+    border-top: var(--border);
+    margin: 5px 0;
+}

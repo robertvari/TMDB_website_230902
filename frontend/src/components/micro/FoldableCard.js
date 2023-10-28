@@ -12,6 +12,10 @@ export default function FoldableCard({title, content}) {
                 }
             </div>
             
+            
+            {
+                opened&& <hr />
+            }
 
             <div>
                 {
