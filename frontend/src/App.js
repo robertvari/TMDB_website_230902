@@ -6,6 +6,7 @@ import MoreView from "./components/MoreView";
 import LoginPage from "./components/LoginPage";
 import RegistrationPage from "./components/RegistrationPage";
 import MovieDetailsView from "./components/MovieDetailsView";
+import ResetPasswordPage from "./components/ResetPasswordPage";
 import NotFoundPage from "./components/NotFoundPage"
 import Navbar from "./components/Navbar";
 import "./styles/main.css"
@@ -24,6 +25,7 @@ function App() {
             <Route path="/people" element={<PeopleView/>}/>
             <Route path="/more" element={<MoreView/>}/>
             <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/reset-password" element={<ResetPasswordPage/>}/>
             <Route path="/registration" element={<RegistrationPage/>}/>
             <Route path="/movies/:id" element={<MovieDetailsView/>}/>
 

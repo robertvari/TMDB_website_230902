@@ -13,7 +13,7 @@ export default function LoginPage() {
 
         <div>
           <button>Login</button>
-          <Link to="">Reset password</Link>
+          <Link to="/reset-password">Reset password</Link>
         </div>
       </form>
     </div>
