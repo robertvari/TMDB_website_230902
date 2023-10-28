@@ -4,7 +4,7 @@ import CardGrid from "./CardGrid"
 
 export default function MovieListView() {
   return (
-    <div className='movie-list-view'>
+    <div className='content-container movie-list-view'>
       <Sidepanel/>
       <CardGrid/>
     </div>

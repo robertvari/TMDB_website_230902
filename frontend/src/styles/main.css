@@ -5,6 +5,7 @@
 @import "Sidepanel";
 @import "CardGrid";
 @import "MovieCard";
+@import "LoginPage";
 
 *{
     margin: 0;
@@ -30,12 +31,40 @@ button{
  padding: 5px 30px;
  border-radius: 10px;
  border: none;
- background-color: #01b3e3;
+ background-color: var(--light-blue);
  color: white;
  cursor: pointer;
 }
 
+button:hover{
+    background-color: #58c7e6;
+    transition: all 0.5s;
+}
+
 a{
     text-decoration: none;
-    color: inherit
+    color: var(--light-blue)
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.content-container{
+    max-width: 1200px;
+    margin: 10px auto;
+}
+
+input{
+    font: inherit;
+    padding: 10px;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    outline: none;
+    margin: 10px 0;
+}
+
+input:focus{
+    border-color: var(--light-blue);
+    transition: all 0.5s;
 }

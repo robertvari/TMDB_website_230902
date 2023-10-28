@@ -1,6 +1,4 @@
 .movie-list-view{
-    max-width: 1200px;
-    margin: 10px auto;
     display: flex;
 }
 
