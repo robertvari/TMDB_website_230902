@@ -1,12 +1,15 @@
+@import "variables.css";
 @import "Navbar";
 @import "Footer";
 @import "MovieListView";
 @import "Sidepanel";
 @import "CardGrid";
+@import "MovieCard";
 
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body{

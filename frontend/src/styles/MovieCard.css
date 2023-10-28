@@ -1,0 +1,48 @@
+.movie-card{
+    border: var(--border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: 160px;
+    height: 365px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.movie-card img{
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.poster-container{
+    position: relative;
+}
+
+.movie-card .rating-container{
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    position: absolute;
+    bottom: -7px;
+    left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-card .info-container{
+    padding: 15px 5px 5px 5px;
+}
+
+.movie-card .title{
+    font-weight: bold;
+}
+
+.movie-card .date{
+    font-size: 12px;
+    color: gray;
+}

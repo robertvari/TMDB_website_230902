@@ -1,5 +1,5 @@
 .footer{
-    background-color: #032541;
+    background-color: var(--navbar-color);
     color: white;
     display: flex;
     justify-content: space-between;
