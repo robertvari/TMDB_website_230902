@@ -6,6 +6,10 @@
     justify-content: space-between;
 }
 
+.navbar a{
+    color: inherit;
+}
+
 .navbar .nav-block{
     display: flex;
 }
