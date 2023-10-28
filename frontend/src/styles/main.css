@@ -6,6 +6,7 @@
 @import "CardGrid";
 @import "MovieCard";
 @import "LoginPage";
+@import "RegistrationPage";
 
 *{
     margin: 0;

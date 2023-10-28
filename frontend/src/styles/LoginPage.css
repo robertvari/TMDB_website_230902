@@ -1,11 +1,7 @@
-.login-container{
+.login-container,
+.login-container form{
     display: flex;
     flex-direction: column;
-}
-
-.login-container form{
-    display: inherit;
-    flex-direction:inherit
 }
 
 .login-container button{

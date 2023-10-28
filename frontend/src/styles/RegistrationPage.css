@@ -1,0 +1,9 @@
+.registration-container, 
+.registration-container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-container button{
+    margin-right: 10px;
+}
