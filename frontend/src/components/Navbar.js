@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from "../images/logo.svg"
+import SearchBox from './micro/SearchBox'
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {
@@ -16,7 +17,7 @@ export default function Navbar() {
         <div className='nav-block'>
             <Link to="/login" className='navlink'>Login</Link>
             <Link to="/registration" className='navlink'>Join TMDB</Link>
-            <i className="fa fa-search" aria-hidden="true"/>
+            <SearchBox/>
         </div>
     </div>
   )

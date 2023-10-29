@@ -12,6 +12,7 @@
 
 .navbar .nav-block{
     display: flex;
+    align-items: center;
 }
 
 .navbar .navlink{
@@ -30,4 +31,19 @@
 .navbar i{
     color: #01b3e3;
     font-size: 25px;
+}
+
+.search-box-container{
+    display: flex;
+    align-items: center;
+}
+
+.search-box-container input{
+    margin: 0;
+    margin-right: 10px;
+    padding: 3px 10px;
+}
+
+.search-box-container i{
+    cursor: pointer;
 }
