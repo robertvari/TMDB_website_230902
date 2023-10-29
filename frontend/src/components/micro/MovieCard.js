@@ -7,7 +7,7 @@ export default function MovieCard({movie_data}) {
     <Link to="/movies/123" className='movie-card'>
         <div className='poster-container'>
             <img src={movie_data.poster_path} alt="" />
-            <div className='rating-container'>59%</div>
+            <div className='rating-container'>{Math.round(movie_data.vote_average*10)}%</div>
         </div>
 
         <div className='info-container'>
