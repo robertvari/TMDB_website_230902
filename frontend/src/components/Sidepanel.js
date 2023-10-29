@@ -1,20 +1,24 @@
 import React from 'react'
 import FoldableCard from './micro/FoldableCard'
+import ComboBox from './micro/ComboBox'
 
 function Sorting(){
+  const options = [
+    "Popularity Descending",
+    "Popularity Ascending",
+    "Rating Descending",
+    "Rating Ascending",
+    "Release Date Descending",
+    "Release Date Ascending",
+    "Title (A-Z)",
+    "Title (Z-A)",
+  ]
+
   return(
     <div onClick={e => e.stopPropagation()}>
       <p>Sort Results By</p>
-      <select>
-        <option>Popularity Descending</option>
-        <option>Popularity Ascending</option>
-        <option>Rating Descending</option>
-        <option>Rating Ascending</option>
-        <option>Release Date Descending</option>
-        <option>Release Date Ascending</option>
-        <option>Title (A-Z)</option>
-        <option>Title (Z-A)</option>
-      </select>
+
+      <ComboBox items={options} selected_item={options[0]}/>
     </div>
   )
 }
@@ -25,7 +29,7 @@ function Filters(){
   return(
     <div onClick={e => e.stopPropagation()}>
       {
-        genre_list.map(genre => <div>{genre}</div>)
+        genre_list.map(genre => <div key={genre}>{genre}</div>)
       }
     </div>
   )
