@@ -20,9 +20,13 @@ function Sorting(){
 }
 
 function Filters(){
+  const genre_list = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama"]
+
   return(
-    <div>
-      Filters...
+    <div onClick={e => e.stopPropagation()}>
+      {
+        genre_list.map(genre => <div>{genre}</div>)
+      }
     </div>
   )
 }
