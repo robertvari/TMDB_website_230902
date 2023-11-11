@@ -16,4 +16,4 @@ class Movie(models.Model):
     poster_path = models.ImageField(upload_to="posters")
 
     def __str__(self) -> str:
-        return self.title
+        return self.original_title
