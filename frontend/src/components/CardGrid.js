@@ -8,7 +8,7 @@ export default function CardGrid() {
 
 
   useEffect(() => {
-    axios.get(`${API_URL}/api/movie-list/`).then(response => set_movie_list(response.data))
+    axios.get(`${API_URL}/api/db/movie-list/`).then(response => set_movie_list(response.data))
   }, [])
 
   return (

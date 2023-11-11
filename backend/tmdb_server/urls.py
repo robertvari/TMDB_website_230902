@@ -1,9 +1,7 @@
 from django.contrib import admin
-from django.urls import path
-
-from api.views import MovieListView
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/movie-list/", MovieListView.as_view()),
+    path("api/db/", include("tmdb_database.urls"))
 ]
