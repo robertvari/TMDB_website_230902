@@ -13,7 +13,7 @@ export default function MovieCard({movie_data}) {
         </div>
 
         <div className='info-container'>
-            <div className='title'>{movie_data.original_title}</div>
+            <div className='title'>{movie_data.title}</div>
             <div className='date'>{movie_data.release_date}</div>
         </div>    
     </Link>

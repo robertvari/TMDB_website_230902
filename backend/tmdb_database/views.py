@@ -17,7 +17,7 @@ class MovieListView(APIView):
     def _get_movies(self):
         for movie in Movie.objects.all():
             self.data.append({
-                "original_title": movie.original_title,
+                "title": movie.title,
                 "vote_average": movie.vote_average,
                 "release_date": movie.release_date,
                 "poster_path": movie.poster_path.url,
