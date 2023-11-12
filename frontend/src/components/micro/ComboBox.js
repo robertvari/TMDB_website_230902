@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { MovieContext } from '../contexts/MovieContext'
 
-export default function ComboBox({items, selected_item}) {
+export default function ComboBox({items, selected_item, set_current_sorting}) {
     const [opened, set_opened] = useState(false)
     const [current_item, set_current_item] = useState(selected_item)
+    const {set_sorting} = useContext(MovieContext)
 
     return (
         <div className='combo-box'>
@@ -18,6 +20,7 @@ export default function ComboBox({items, selected_item}) {
                                 {
                                     set_opened(false)
                                     set_current_item(item)
+                                    set_sorting(item)
                                 }
                             }>
                             {item}

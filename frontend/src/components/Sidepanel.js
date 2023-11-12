@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import FoldableCard from './micro/FoldableCard'
 import ComboBox from './micro/ComboBox'
 
-function Sorting(){
+function Sorting(){ 
   const options = [
     "Popularity Descending",
     "Popularity Ascending",
@@ -18,7 +18,7 @@ function Sorting(){
     <div onClick={e => e.stopPropagation()}>
       <p>Sort Results By</p>
 
-      <ComboBox items={options} selected_item={options[0]}/>
+      <ComboBox items={options} selected_item={options[2]}/>
     </div>
   )
 }

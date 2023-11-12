@@ -1,17 +1,29 @@
+from typing import Any
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import MenuItem, Movie, Genre
 
 class MovieListView(APIView):
-    def get(self, request):
+    def __init__(self, **kwargs: Any):
+        super().__init__(**kwargs)
         self.data = []
+        self.sorting = "-vote_average"
+
+    def get(self, request):
+        self.data.clear()
+        self._get_movies()
+        return Response(self.data)
+    
+    def post(self, request):
+        self.data.clear()
+        self.sorting = request.data.get("sorting") if request.data.get("sorting") else "-vote_average"
         self._get_movies()
 
         return Response(self.data)
-    
+
     def _get_movies(self):
-        for movie in Movie.objects.all():
+        for movie in Movie.objects.order_by(self.sorting):
 
             self.data.append({
                 "title": movie.title,

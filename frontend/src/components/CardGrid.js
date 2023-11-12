@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MovieCard from './micro/MovieCard'
-import axios from 'axios'
+import { MovieContext } from './contexts/MovieContext'
 
 export default function CardGrid() {
-  const API_URL = process.env.REACT_APP_API_URL
-  const [movie_list, set_movie_list] = useState([])
-
-
-  useEffect(() => {
-    axios.get(`${API_URL}/api/db/movie-list/`).then(response => set_movie_list(response.data))
-  }, [])
+  const {movie_list} = useContext(MovieContext)
 
   return (
     <div className='card-grid'>
