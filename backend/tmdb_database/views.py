@@ -1,11 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-# import tmdbsimple as tmdb
-# tmdb.API_KEY = '83cbec0139273280b9a3f8ebc9e35ca9'
-# tmdb.REQUESTS_TIMEOUT = 5
-# POSTER_ROOT_PATH = "https://image.tmdb.org/t/p/w300"
 
-from .models import MenuItem, Movie
+from .models import MenuItem, Movie, Genre
 
 class MovieListView(APIView):
     def get(self, request):
@@ -16,19 +12,14 @@ class MovieListView(APIView):
     
     def _get_movies(self):
         for movie in Movie.objects.all():
+
             self.data.append({
                 "title": movie.title,
                 "vote_average": movie.vote_average,
                 "release_date": movie.release_date,
                 "poster_path": movie.poster_path.url,
+                "genres": [i.id for i in movie.genres.all()]
             })
-
-        # movies = tmdb.Movies()
-        # movie_list = movies.popular(page=1)["results"]
-
-        # for movie_data in movie_list:
-        #     movie_data["poster_path"] = f"{POSTER_ROOT_PATH}{movie_data['poster_path']}"
-        #     self.data.append(movie_data)
 
 
 class MenuListView(APIView):
@@ -41,4 +32,11 @@ class MenuListView(APIView):
                 "slug": menu_item.slug
                 })
 
+        return Response(result)
+    
+class GenreListView(APIView):
+    def get(self, request):
+        result = []
+        for genre in Genre.objects.all():
+            result.append({"id":genre.id, "name": genre.name})
         return Response(result)
