@@ -18,7 +18,8 @@ class MovieListView(APIView):
                 "vote_average": movie.vote_average,
                 "release_date": movie.release_date,
                 "poster_path": movie.poster_path.url,
-                "genres": [i.id for i in movie.genres.all()]
+                "genres": [i.id for i in movie.genres.all()],
+                "slug": movie.slug
             })
 
 
