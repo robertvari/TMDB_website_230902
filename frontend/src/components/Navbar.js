@@ -20,11 +20,6 @@ export default function Navbar() {
             {
               menu_list.map(menu_item => <Link to={menu_item.slug} className='navlink'>{menu_item.name}</Link>)
             }
-
-            {/* <Link to="/" className='navlink'>Movies</Link>
-            <Link to="/tvshows" className='navlink'>TV Shows</Link>
-            <Link to="/people" className='navlink'>People</Link>
-            <Link to="/more" className='navlink'>More</Link> */}
         </div>
 
         <div className='nav-block'>

@@ -11,33 +11,36 @@ import NotFoundPage from "./components/NotFoundPage"
 import Navbar from "./components/Navbar";
 import "./styles/main.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { MovieProvider } from "./components/contexts/MovieContext";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-      
-        <div>
-          <Navbar/>
+      <MovieProvider>
 
-          <Routes>
-            <Route path="/tvshows" element={<TVShowsView/>}/>
-            <Route path="/people" element={<PeopleView/>}/>
-            <Route path="/more" element={<MoreView/>}/>
-            <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/reset-password" element={<ResetPasswordPage/>}/>
-            <Route path="/registration" element={<RegistrationPage/>}/>
-            <Route path="/movies/:id" element={<MovieDetailsView/>}/>
+        <BrowserRouter>
+                <div>
+            <Navbar/>
 
-            
-            <Route path="/" element={<MovieListView/>}/>
-            <Route path="*" element={<NotFoundPage/>}/>
-          </Routes>
-        </div>
-        
-        <Footer/>
+            <Routes>
+              <Route path="/tvshows" element={<TVShowsView/>}/>
+              <Route path="/people" element={<PeopleView/>}/>
+              <Route path="/more" element={<MoreView/>}/>
+              <Route path="/login" element={<LoginPage/>}/>
+              <Route path="/reset-password" element={<ResetPasswordPage/>}/>
+              <Route path="/registration" element={<RegistrationPage/>}/>
+              <Route path="/movies/:id" element={<MovieDetailsView/>}/>
 
-      </BrowserRouter>
+              
+              <Route path="/" element={<MovieListView/>}/>
+              <Route path="*" element={<NotFoundPage/>}/>
+            </Routes>
+          </div>
+          
+          <Footer/>
+        </BrowserRouter>
+
+      </MovieProvider>
     </div>
   );
 }
