@@ -1,6 +1,6 @@
 import tmdbsimple as tmdb
-import os, requests, json
-from tmdb_database.models import Movie
+import os, requests, json, random
+from tmdb_database.models import Movie, Genre
 from django.core.files import File
 
 tmdb.API_KEY = '83cbec0139273280b9a3f8ebc9e35ca9'
@@ -30,12 +30,21 @@ def create_movie_db():
         vote_average = movie_data.get("vote_average")
         release_date = movie_data.get("release_date")
         poster_path = movie_data.get("poster_path")
+        popularity = movie_data.get("popularity")
 
         movie = Movie()
         movie.title = title
         movie.vote_average = vote_average
         movie.release_date = release_date
         movie.poster_path.save(os.path.basename(poster_path), File(open(poster_path, "rb")))
+        movie.popularity = popularity
+
+        genre_list = [i for i in Genre.objects.all()]
+        random.shuffle(genre_list)
+        movie_genres = genre_list[:random.randint(1, 4)]
+        for i in movie_genres:
+            movie.genres.add(i)
+
         movie.save()
 
 def get_image_from_url(url):
