@@ -19,7 +19,7 @@ class Genre(models.Model):
 
 class Movies(models.Model):
     title = models.CharField(max_length=200, help_text="The movie title")
-    slug = models.SlugField(max_length=200, blank=True, unique=True)
+    slug = models.SlugField(max_length=200, blank=True)
     vote_average = models.FloatField(default=0.0, help_text="Movie rating")
     popularity = models.FloatField(default=0.0)
     release_date = models.DateField()
@@ -34,12 +34,13 @@ class Movies(models.Model):
 
 class MovieDetails(models.Model):
     title = models.CharField(max_length=200, help_text="The movie title")
-    slug = models.SlugField(max_length=200, blank=True, unique=True)
+    overview = models.CharField(max_length=200, help_text="Overview")
+    slug = models.SlugField(max_length=200, blank=True)
     vote_average = models.FloatField(default=0.0, help_text="Movie rating")
     popularity = models.FloatField(default=0.0)
     release_date = models.DateField()
     poster_path = models.ImageField(upload_to="posters")
-    backdrop_path = models.ImageField(upload_to="backdrops")
+    backdrop_path = models.ImageField(upload_to="backdrops", blank=True)
     genres = models.ManyToManyField(Genre)
 
 
