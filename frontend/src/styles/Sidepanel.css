@@ -4,3 +4,10 @@
 
     margin-right: 10px;
 }
+
+.genre-list .active{
+    color: white;
+    background-color: var(--light-blue);
+    border-radius: 5px;
+    padding-left: 11px;
+}
