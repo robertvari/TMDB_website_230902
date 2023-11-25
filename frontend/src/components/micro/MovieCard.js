@@ -6,7 +6,7 @@ export default function MovieCard({movie_data}) {
   const API_URL = process.env.REACT_APP_API_URL
 
   return (
-    <Link to="/movies/123" className='movie-card'>
+    <Link to={`/movies/${movie_data.slug}`} className='movie-card'>
         <div className='poster-container'>
             <img src={`${API_URL}/${movie_data.poster_path}`} alt="" />
             <div className='rating-container'>{Math.round(movie_data.vote_average*10)}%</div>
