@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import FoldableCard from './micro/FoldableCard'
 import ComboBox from './micro/ComboBox'
+import { MovieContext } from './contexts/MovieContext'
 
 function Sorting(){ 
+  const {set_sorting} = useContext(MovieContext)
+
   const options = [
     "Popularity Descending",
     "Popularity Ascending",
@@ -18,12 +21,12 @@ function Sorting(){
     <div onClick={e => e.stopPropagation()}>
       <p>Sort Results By</p>
 
-      <ComboBox items={options} selected_item={options[2]}/>
+      <ComboBox items={options} selected_item={options[2]} callback_function={set_sorting}/>
     </div>
   )
 }
 
-function Filters(){
+function Genres(){
   const genre_list = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama"]
 
   return(
@@ -35,12 +38,11 @@ function Filters(){
   )
 }
 
-
 export default function Sidepanel() {
   return (
     <div className='sidepanel'>
       <FoldableCard title="Sort" content={<Sorting/>}/>
-      <FoldableCard title="Filters" content={<Filters/>}/>
+      <FoldableCard title="Filters" content={<Genres/>}/>
     </div>
   )
 }
