@@ -18,10 +18,11 @@
     position: relative;
 }
 
-.movie-card .rating-container{
-    background-color: black;
+.rating-container{
+    background-color: var(--navbar-color);
     width: 40px;
     height: 40px;
+    border: 2px solid white;
     border-radius: 50%;
     color: white;
     font-weight: bold;
@@ -32,6 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .movie-card .info-container{

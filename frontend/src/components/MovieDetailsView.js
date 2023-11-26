@@ -26,10 +26,9 @@ export default function MovieDetailsView() {
                     
                     <div className='movie-details-container'>
                         <h1 className='title'>{movie_data.title} <small>({movie_data.release_date.slice(0, 4)})</small></h1>
-                        <small>{movie_data.release_date} | {movie_data.genres}</small>
-                        <div>{movie_data.vote_average}</div>
-                        <h2>{movie_data.overview}</h2>
-                        <p>{movie_data.genres}</p>
+                        <small>{movie_data.release_date} ({movie_data.language}) | {movie_data.genres.join(", ")}</small>
+                        <div className='rating-container'>{Math.round(movie_data.vote_average*10)}%</div>
+                        <h4>{movie_data.overview}</h4>
                     </div>
 
                 </div>                
