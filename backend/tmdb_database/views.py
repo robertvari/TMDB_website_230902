@@ -2,7 +2,7 @@ from typing import Any
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import MenuItem, Movies, Genre
+from .models import MenuItem, Movie, Genre
 
 class MovieListView(APIView):
     def __init__(self, **kwargs: Any):
@@ -23,7 +23,7 @@ class MovieListView(APIView):
         return Response(self.data)
 
     def _get_movies(self):
-        for movie in Movies.objects.order_by(self.sorting):
+        for movie in Movie.objects.order_by(self.sorting):
 
             self.data.append({
                 "title": movie.title,

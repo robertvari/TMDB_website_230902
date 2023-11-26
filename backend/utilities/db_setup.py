@@ -1,7 +1,9 @@
 import tmdbsimple as tmdb
 import os, requests, json, random
-from tmdb_database.models import Movies, Genre, MenuItem, MovieDetails
+from tmdb_database.models import Movie, Genre, MenuItem, MovieDetails
 from django.core.files import File
+from django.core.management import execute_from_command_line
+from django.contrib.auth.models import User
 
 tmdb.API_KEY = '83cbec0139273280b9a3f8ebc9e35ca9'
 tmdb.REQUESTS_TIMEOUT = 5
@@ -12,7 +14,7 @@ BACKDROP_CACHE_FOLDER = "D:/Work/_PythonSuli/halado-230902/web_development/fake_
 DATABASE_JSON = "D:/Work/_PythonSuli/halado-230902/web_development/fake_db/movie_db.json"
 
 def download_movies():
-    movies = tmdb.Movies()
+    movies = tmdb.Movie()
     popular_movies = movies.popular(page=1)["results"]
 
     movie_list = []
@@ -39,7 +41,7 @@ def create_movie_list():
         overview = movie_data.get("overview")
 
         # create movie for movie list
-        movies = Movies()
+        movies = Movie()
         movies.title = title
         movies.vote_average = vote_average
         movies.release_date = release_date
@@ -65,8 +67,11 @@ def create_movie_list():
             movie_details.backdrop_path.save(os.path.basename(backdrop_path), File(open(backdrop_path, "rb")))
         movie_details.popularity = popularity
         movie_details.overview = overview
-        movie_details.save()
         
+        for i in movie_genres:
+            movie_details.genres.add(i)
+
+        movie_details.save()
 
 def create_genres():
     genre_list = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", 
@@ -111,8 +116,16 @@ def get_image_from_url(url, folder_path):
     print(f"Downloading: {url}")
     return image_path
 
+def run_migrations():
+    execute_from_command_line(["manage.py", "makemigrations"])
+    execute_from_command_line(["manage.py", "migrate"])
+
+def create_superuser():
+    User.objects.create_superuser("robert", "robert@gmail.com", "testpas123")
 
 def run():
+    run_migrations()
+    create_superuser()
     create_menu_items()
     create_genres()
     create_movie_list()

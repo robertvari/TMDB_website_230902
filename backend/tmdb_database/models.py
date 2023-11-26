@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.dispatch import receiver
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 
 class MenuItem(models.Model):
     name = models.CharField(max_length=200, default="")
@@ -10,14 +10,13 @@ class MenuItem(models.Model):
     def __str__(self) -> str:
         return self.name
     
-
 class Genre(models.Model):
     name = models.CharField(max_length=200)
     
     def __str__(self) -> str:
         return self.name
 
-class Movies(models.Model):
+class Movie(models.Model):
     title = models.CharField(max_length=200, help_text="The movie title")
     slug = models.SlugField(max_length=200, blank=True)
     vote_average = models.FloatField(default=0.0, help_text="Movie rating")
@@ -34,7 +33,7 @@ class Movies(models.Model):
 
 class MovieDetails(models.Model):
     title = models.CharField(max_length=200, help_text="The movie title")
-    overview = models.CharField(max_length=200, help_text="Overview")
+    overview = models.CharField(max_length=200, blank=True, help_text="Overview")
     slug = models.SlugField(max_length=200, blank=True)
     vote_average = models.FloatField(default=0.0, help_text="Movie rating")
     popularity = models.FloatField(default=0.0)
@@ -44,7 +43,22 @@ class MovieDetails(models.Model):
     genres = models.ManyToManyField(Genre)
 
 
-@receiver(pre_save, sender=Movies)
+@receiver(pre_save, sender=MovieDetails)
 def slug_generator(sender, instance, **kwargs):
     if not instance.slug:
         instance.slug = slugify(f"{instance.title}-{instance.release_date}")
+
+@receiver(post_save, sender=MovieDetails)
+def create_movie(sender, instance, **kwargs):
+    if kwargs["created"]:
+        Movie.objects.create(
+            title = instance.title,
+            slug = instance.slug,
+            vote_average=instance.vote_average,
+            popularity = instance.popularity,
+            release_date=instance.release_date,
+            poster_path = instance.poster_path,
+            genres = instance.genres
+        )
+    else:
+        pass

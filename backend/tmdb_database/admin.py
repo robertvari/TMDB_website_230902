@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import MenuItem, Movies, Genre, MovieDetails
+from .models import MenuItem, Movie, Genre, MovieDetails
 
 class MovieAdmin(admin.ModelAdmin):
     list_display = ["id", "title", "vote_average", "release_date", "poster_path"]
@@ -14,5 +14,5 @@ class MovieDetailsAdmin(admin.ModelAdmin):
 
 admin.site.register(MenuItem)
 admin.site.register(Genre)
-admin.site.register(Movies, MovieAdmin)
+admin.site.register(Movie, MovieAdmin)
 admin.site.register(MovieDetails, MovieDetailsAdmin)
