@@ -32,6 +32,7 @@ def create_movie_list():
 
     for movie_data in movie_db:
         title = movie_data.get("title")
+        language= movie_data.get("original_language")
         vote_average = movie_data.get("vote_average")
         release_date = movie_data.get("release_date")
         poster_path = movie_data.get("poster_path")
@@ -50,6 +51,7 @@ def create_movie_list():
             movie_details.backdrop_path.save(os.path.basename(backdrop_path), File(open(backdrop_path, "rb")))
         movie_details.popularity = popularity
         movie_details.overview = overview
+        movie_details.language = language
 
         genre_list = [i for i in Genre.objects.all()]
         random.shuffle(genre_list)
