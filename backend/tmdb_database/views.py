@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import MenuItem, Movie, Genre, MovieDetails
+from .models import MenuItem, Movie, Genre
 
 class MovieListView(APIView):
     def __init__(self, **kwargs: Any):
@@ -56,13 +56,14 @@ class GenreListView(APIView):
     
 class MovieDetailsView(APIView):
     def get(self, request, slug):
-        if not MovieDetails.objects.filter(slug=slug).exists():
+        if not Movie.objects.filter(slug=slug).exists():
             return Response(f"The movie {slug} does not exists", status=status.HTTP_404_NOT_FOUND)
 
-        movie = MovieDetails.objects.filter(slug=slug)[0]
+        movie = Movie.objects.filter(slug=slug)[0]
         movie_data = {
             "title": movie.title,
             "overview": movie.overview,
+            "language": movie.language,
             "vote_average": movie.vote_average,
             "release_date": movie.release_date,
             "poster_path": movie.poster_path.url if movie.poster_path else None,

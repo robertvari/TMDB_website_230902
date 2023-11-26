@@ -1,6 +1,6 @@
 import tmdbsimple as tmdb
 import os, requests, json, random
-from tmdb_database.models import Movie, Genre, MenuItem, MovieDetails
+from tmdb_database.models import Movie, Genre, MenuItem
 from django.core.files import File
 from django.core.management import execute_from_command_line
 from django.contrib.auth.models import User
@@ -39,25 +39,9 @@ def create_movie_list():
         popularity = movie_data.get("popularity")
         overview = movie_data.get("overview")
 
-        # create movie for movie list
-        # movies = Movie()
-        # movies.title = title
-        # movies.vote_average = vote_average
-        # movies.release_date = release_date
-        # movies.poster_path.save(os.path.basename(poster_path), File(open(poster_path, "rb")))
-        # movies.popularity = popularity
-
-        # genre_list = [i for i in Genre.objects.all()]
-        # random.shuffle(genre_list)
-        # movie_genres = genre_list[:random.randint(1, 4)]
-        # for i in movie_genres:
-        #     movies.genres.add(i)
-
-        # movies.save()
-
         # create mobie details
         print(f"Add movie: {title}")
-        movie_details = MovieDetails()
+        movie_details = Movie()
         movie_details.title = title
         movie_details.vote_average = vote_average
         movie_details.release_date = release_date
