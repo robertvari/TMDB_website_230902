@@ -32,7 +32,6 @@ def create_movie_list():
 
     for movie_data in movie_db:
         title = movie_data.get("title")
-        print(f"Add movie: {title}")
         vote_average = movie_data.get("vote_average")
         release_date = movie_data.get("release_date")
         poster_path = movie_data.get("poster_path")
@@ -41,23 +40,23 @@ def create_movie_list():
         overview = movie_data.get("overview")
 
         # create movie for movie list
-        movies = Movie()
-        movies.title = title
-        movies.vote_average = vote_average
-        movies.release_date = release_date
-        movies.poster_path.save(os.path.basename(poster_path), File(open(poster_path, "rb")))
-        movies.popularity = popularity
+        # movies = Movie()
+        # movies.title = title
+        # movies.vote_average = vote_average
+        # movies.release_date = release_date
+        # movies.poster_path.save(os.path.basename(poster_path), File(open(poster_path, "rb")))
+        # movies.popularity = popularity
 
-        genre_list = [i for i in Genre.objects.all()]
-        random.shuffle(genre_list)
-        movie_genres = genre_list[:random.randint(1, 4)]
-        for i in movie_genres:
-            movies.genres.add(i)
+        # genre_list = [i for i in Genre.objects.all()]
+        # random.shuffle(genre_list)
+        # movie_genres = genre_list[:random.randint(1, 4)]
+        # for i in movie_genres:
+        #     movies.genres.add(i)
 
-        movies.save()
+        # movies.save()
 
         # create mobie details
-        print(f"Add movie details: {title}")
+        print(f"Add movie: {title}")
         movie_details = MovieDetails()
         movie_details.title = title
         movie_details.vote_average = vote_average
@@ -67,7 +66,10 @@ def create_movie_list():
             movie_details.backdrop_path.save(os.path.basename(backdrop_path), File(open(backdrop_path, "rb")))
         movie_details.popularity = popularity
         movie_details.overview = overview
-        
+
+        genre_list = [i for i in Genre.objects.all()]
+        random.shuffle(genre_list)
+        movie_genres = genre_list[:random.randint(1, 4)]
         for i in movie_genres:
             movie_details.genres.add(i)
 

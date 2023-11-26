@@ -36,12 +36,11 @@ class MovieDetails(models.Model):
     overview = models.CharField(max_length=200, blank=True, help_text="Overview")
     slug = models.SlugField(max_length=200, blank=True)
     vote_average = models.FloatField(default=0.0, help_text="Movie rating")
-    popularity = models.FloatField(default=0.0)
+    popularity = models.FloatField(default=0.0, blank=True)
     release_date = models.DateField()
-    poster_path = models.ImageField(upload_to="posters")
+    poster_path = models.ImageField(upload_to="posters", blank=True)
     backdrop_path = models.ImageField(upload_to="backdrops", blank=True)
     genres = models.ManyToManyField(Genre)
-
 
 @receiver(pre_save, sender=MovieDetails)
 def slug_generator(sender, instance, **kwargs):
@@ -51,14 +50,17 @@ def slug_generator(sender, instance, **kwargs):
 @receiver(post_save, sender=MovieDetails)
 def create_movie(sender, instance, **kwargs):
     if kwargs["created"]:
-        Movie.objects.create(
+        movie = Movie.objects.create(
             title = instance.title,
             slug = instance.slug,
             vote_average=instance.vote_average,
             popularity = instance.popularity,
             release_date=instance.release_date,
-            poster_path = instance.poster_path,
-            genres = instance.genres
+            poster_path = instance.poster_path
         )
+        # genre_list = [i for i in instance.genres.all()]
+        # print("Movie genres:", instance.genres)
+        # movie.genres.set(genre_list)
+        # movie.save()
     else:
         pass
