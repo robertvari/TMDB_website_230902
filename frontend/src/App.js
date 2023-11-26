@@ -29,7 +29,7 @@ function App() {
               <Route path="/login" element={<LoginPage/>}/>
               <Route path="/reset-password" element={<ResetPasswordPage/>}/>
               <Route path="/registration" element={<RegistrationPage/>}/>
-              <Route path="/movies/:id" element={<MovieDetailsView/>}/>
+              <Route path="/movies/:slug" element={<MovieDetailsView/>}/>
 
               
               <Route path="/" element={<MovieListView/>}/>

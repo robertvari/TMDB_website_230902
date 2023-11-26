@@ -8,6 +8,7 @@
 @import "LoginPage";
 @import "RegistrationPage";
 @import "ComboBox";
+@import "MovieDetails";
 
 *{
     margin: 0;

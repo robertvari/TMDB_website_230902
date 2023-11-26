@@ -1,10 +1,39 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 export default function MovieDetailsView() {
-    const {id} = useParams()
+    const API_URL = process.env.REACT_APP_API_URL
+    const {slug} = useParams()
+    const [movie_data, set_movie_data] = useState(null)
+
+    useEffect(()=>{
+        axios.get(`${API_URL}/api/db/movie/${slug}/`).then(res => set_movie_data(res.data))
+    }, [])
+
+    if(!movie_data){
+        return null
+    }
 
     return (
-        <h1>Movie Details View: {id}</h1>
+        <div className='movie-details-container'>
+            <div className='backdrop' style={{backgroundImage: `url(${API_URL}${movie_data.backdrop_path})`}}>
+                
+                
+                <div className='h-layout'>
+                    
+                    <img src={`${API_URL}${movie_data.poster_path}`} alt="" />
+                    
+                    <div className='movie-details-container'>
+                        <h1 className='title'>{movie_data.title} <small>({movie_data.release_date.slice(0, 4)})</small></h1>
+                        <small>{movie_data.release_date} | {movie_data.genres}</small>
+                        <div>{movie_data.vote_average}</div>
+                        <h2>{movie_data.overview}</h2>
+                        <p>{movie_data.genres}</p>
+                    </div>
+
+                </div>                
+            </div>
+        </div>
     )
 }
